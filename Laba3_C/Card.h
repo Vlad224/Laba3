@@ -13,6 +13,7 @@ namespace Prog3 {
 		Card* cards;
 	public:
 		DeckCard();
+		DeckCard(int n);
 		DeckCard(int a,int n);
 		DeckCard(int r, int s,int n);
 		DeckCard(const DeckCard& a);

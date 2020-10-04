@@ -5,6 +5,19 @@ namespace Prog3 {
         delete[] cards;
 
     }
+    DeckCard::DeckCard(int n) {
+        if (n < 52 || n>0) {
+            size = n;
+            cards = new Card[size];
+            for (int i = 0; i < size; i++)
+            {
+                cards[i].rang = -1;
+                cards[i].suit = -1;
+            }
+        }
+        else
+            throw std::exception("invalid size");
+    }
     DeckCard::DeckCard(const DeckCard& copy): size(copy.size), cards(nullptr) {
 
         if (size) {
@@ -27,8 +40,6 @@ namespace Prog3 {
                     f = 1;
                     break;
                 }
-                if (f)
-                    break;
             }
         }
         else
@@ -53,8 +64,8 @@ namespace Prog3 {
         }
     }
 	DeckCard::DeckCard(int r,int s,int n) {
-        if (n > 0 && n < 52) {
-            if (r > -1 && r<15 && s>-1 && s < 4) {
+        if (n > 0 || n < 52) {
+            if (r > -1 || r<15 || s>-1 || s < 4) {
                 size = n;
                 cards = new Card[size];
                 cards[0].rang = r;
@@ -87,7 +98,7 @@ namespace Prog3 {
         return i;
     }
     DeckCard::DeckCard(int a, int n) {
-        if (n > 0 && n < 52 && a<=n) {
+        if (n > 0 || n < 52 || a<=n) {
             size = n;
             cards = new Card[size];
             int r = -1;
@@ -113,6 +124,16 @@ namespace Prog3 {
             else
                 throw std::exception("too a large number of cards to initializations ");
      }
+    void SortPuzrSuit(Card* a,int size) {
+        for (int i = 0; i < size - 1; i++)
+            for (int j = (size - 1);j>i;j--)
+                if (a[j - 1].suit < a[j].suit)
+                {
+                    Card t = a[j - 1];
+                    a[j - 1] = a[j];
+                    a[j] = t;
+                }
+    }
     void DeckCard::quickSort_Suit(Card* a, long N) {//Быстрая сортировка
         // На входе - массив a[], a[N] - его последний элемент.
 
@@ -163,8 +184,8 @@ namespace Prog3 {
             quickSort_Rang(s_arr, first, j);
     }
     void DeckCard::Sort() {
-        quickSort_Suit(cards, size);
-        //std::cout << *this;
+       //quickSort_Suit(m, size);
+        SortPuzrSuit(cards, size);
         int n = 0;
         int n0 = 0;
         for (int i = 4; i > 0; i--) {
@@ -325,6 +346,7 @@ namespace Prog3 {
             {
                 std::cin.clear();
                 std::cin.ignore(INT_MAX, '\n');
+                size = -1;
             }
             try {
                 DeckCard a(c,size);
@@ -373,7 +395,18 @@ namespace Prog3 {
         return r;
     }
     DeckCard F_EnterNew(DeckCard& r) {
-        DeckCard a;
+        std::cout << "Enter pls size" << std::endl;
+        int c;
+        do {
+            std::cin >> c;
+            if (!std::cin.good())
+            {
+                std::cin.clear();
+                std::cin.ignore(INT_MAX, '\n');
+                c = -1;
+            }
+        } while (c < 0 || c>52);
+        DeckCard a(c);
         std::cin >> a;
         if (!std::cin.good())
         {

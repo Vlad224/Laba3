@@ -8,7 +8,7 @@ int main() {
 	a.Sort();
 	int fl1 = 1;
 	int c;
-	Prog3::F_Print(a);
+	std::cout << a;
 	while (fl1) {
 		std::cout<< Prog3::dialog();
 		std::cin >> c;
@@ -24,6 +24,6 @@ int main() {
 			if (c == 0)
 				fl1 = 0;
 			else
-				a = dp[c](a);
+				dp[c](a);
 	}
 }
