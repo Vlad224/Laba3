@@ -25,6 +25,8 @@ namespace Prog3 {
 		int FindElement(int r, int s)const;
 		void Sort();
 		int getSize()const;
+		int getRang(int i)const;
+		int getSuit(int i)const;
 		void quickSort_Rang(Card* a, int first, int last);
 		DeckCard& operator ++();
 		std::string Rang(int)const;

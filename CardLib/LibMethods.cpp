@@ -22,6 +22,7 @@ namespace Prog3 {
         size = a.size;
         cards = a.cards;
         a.cards = nullptr;
+        a.size = 0;
     }
     DeckCard::DeckCard(const DeckCard& copy) : size(copy.size), cards(nullptr) {
 
@@ -183,7 +184,9 @@ namespace Prog3 {
             return *this;
         delete[] cards;
         cards = a.cards;
+        size = a.size;
         a.cards = nullptr;
+        a.size = 0;
         return *this;
     }
     DeckCard& DeckCard::operator++() {
@@ -419,5 +422,17 @@ namespace Prog3 {
     }
     void F_Print(DeckCard& r) {
         std::cout << r;
+    }
+    int DeckCard::getRang(int i)const {
+        if (i >= 0 && i < 52)
+            return cards[i].rang;
+        else
+            return -2;
+    }
+    int DeckCard::getSuit(int i)const {
+        if (i >= 0 && i < 52)
+            return cards[i].suit;
+        else
+            return -2;
     }
 }

@@ -248,16 +248,15 @@ namespace Prog3 {
         return s.str();
 
     }
-    DeckCard F_Add(DeckCard& a) {
+    void F_Add(DeckCard& a) {
         try {
             ++a;
         }
         catch (std::exception & ex) {
             std::cout << ex.what() << std::endl;
         }
-        return a;
     }
-    DeckCard F_Random_DeckCard(DeckCard& r) {
+    void F_Random_DeckCard(DeckCard& r) {
         int c;
             std::cout<< "Enter number of random elements"<<std::endl;
             std::cin >> c;
@@ -274,9 +273,8 @@ namespace Prog3 {
             catch (std::exception & ex) {
                 std::cout << ex.what() << std::endl;
             } 
-        return r;
     }
-    DeckCard F_Suit(DeckCard& r) {
+      void F_Suit(DeckCard& r) {
         int c;
         std::cout << "Enter number for get Suit"<<std::endl;
         std::cin >> c;
@@ -292,9 +290,8 @@ namespace Prog3 {
         catch (std::exception & ex) {
             std::cout << ex.what() << std::endl;
         }
-        return r;
     }
-    DeckCard F_Rang(DeckCard& r) {
+    void F_Rang(DeckCard& r) {
         int c;
         std::cout << "Enter number for get Rang"<< std::endl;
         std::cin >> c;
@@ -310,9 +307,8 @@ namespace Prog3 {
         catch (std::exception & ex) {
             std::cout << ex.what() << std::endl;
         }
-        return r;
     }
-    DeckCard F_EnterNew(DeckCard& r) {
+    void F_EnterNew(DeckCard& r) {
         DeckCard a;
         std::cin >> a;
         if (!std::cin.good())
@@ -324,10 +320,8 @@ namespace Prog3 {
         else {
             r = a;
         }
-        return r;
     }
-    DeckCard F_Print(DeckCard& r) {
+    void F_Print(DeckCard& r) {
         std::cout << r;
-        return r;
     }
 }

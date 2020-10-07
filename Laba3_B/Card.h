@@ -30,10 +30,10 @@ namespace Prog3 {
 		friend std::istream& operator >>(std::istream& s, DeckCard& r);
 	};
 std::string dialog();
-DeckCard F_Add(DeckCard& r);
-DeckCard F_Random_DeckCard(DeckCard& r);
-DeckCard F_Suit(DeckCard& r);
-DeckCard F_Rang(DeckCard& r);
-DeckCard F_EnterNew(DeckCard& r);
-DeckCard F_Print(DeckCard& r);
+void F_Add(DeckCard& r);
+void F_Random_DeckCard(DeckCard& r);
+void F_Suit(DeckCard& r);
+void F_Rang(DeckCard& r);
+void F_EnterNew(DeckCard& r);
+void F_Print(DeckCard& r);
 }
