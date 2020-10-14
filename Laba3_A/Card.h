@@ -9,7 +9,7 @@ namespace Prog3 {
 	};
 	class DeckCard {
 	private:
-		static const int size = 10;
+		static const int size = 52;
 		Card cards[size];
 	public:
 		DeckCard();
@@ -22,10 +22,12 @@ namespace Prog3 {
 		void quickSort_Rang(Card* a, int first, int last);
 		void quickSort_Suit(Card* a, long N);
 		DeckCard& add();
-		std::string Rang(int)const;
-		std::string Suit(int)const;
-		std::string rangget(int)const;
-		std::string suitget(int)const;
+		std::string Rang(int)const;//красивый вывод  ранга
+		std::string Suit(int)const;//красивый вывод  масти
+		std::string rangget(int)const;//Чекаем инт выходит за пределы или нет(Rang работает через него)
+		std::string suitget(int)const;//Чекаем инт выходит за пределы или нет(Suit работает через него)
+		int GetRang(int a)const;
+		int GetSuit(int a)const;
         friend std::ostream& operator <<(std::ostream& c, const DeckCard& r);
 		friend std::istream& operator >>(std::istream& s, DeckCard& r);
 	};

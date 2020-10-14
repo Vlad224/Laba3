@@ -10,6 +10,7 @@ namespace Prog3 {
 	class DeckCard {
 	private:
 		int size;
+		int size_real;
 		Card* cards;
 	public:
 		DeckCard();
@@ -24,6 +25,7 @@ namespace Prog3 {
 		int FindPlace(int r, int s)const;
 		int FindElement(int r, int s)const;
 		void Sort();
+		int getMemorySize()const;
 		int getSize()const;
 		int getRang(int i)const;
 		int getSuit(int i)const;

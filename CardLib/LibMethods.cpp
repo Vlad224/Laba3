@@ -8,6 +8,7 @@ namespace Prog3 {
     DeckCard::DeckCard(int n) {
         if (n <= 52 && n>0) {
             size = n;
+            size_real = 0;
             cards = new Card[size];
             for (int i = 0; i < size; i++)
             {
@@ -20,11 +21,12 @@ namespace Prog3 {
     }
     DeckCard::DeckCard(DeckCard&& a) {
         size = a.size;
+        size_real = a.size_real;
         cards = a.cards;
         a.cards = nullptr;
         a.size = 0;
     }
-    DeckCard::DeckCard(const DeckCard& copy) : size(copy.size), cards(nullptr) {
+    DeckCard::DeckCard(const DeckCard& copy) : size(copy.size),size_real(copy.size_real), cards(nullptr) {
 
         if (size) {
 
@@ -53,6 +55,7 @@ namespace Prog3 {
         if (f) {
             delete[] cards;
             size = copy.size;
+            size_real = copy.size_real;
             cards = new Card[size];
             for (int i = 0; i < size; i++) {
                 cards[i] = copy.cards[i];
@@ -63,6 +66,7 @@ namespace Prog3 {
     }
     DeckCard::DeckCard() {
         size = 10;
+        size_real = 0;
         cards = new Card[size];
         for (int i = 0; i < size; i++) {
             cards[i].rang = -1;
@@ -73,6 +77,7 @@ namespace Prog3 {
         if (n > 0 && n <= 52) {
             if (r > -1 && r<15&& s>-1 && s < 4) {
                 size = n;
+                size_real = 1;
                 cards = new Card[size];
                 cards[0].rang = r;
                 cards[0].suit = s;
@@ -106,6 +111,7 @@ namespace Prog3 {
     DeckCard::DeckCard(int a, int n) {
         if (n > 0 && n <= 52 && a <= n && a>0) {
             size = n;
+            size_real = a;
             cards = new Card[size];
             int r = -1;
             int s = -1;
@@ -184,6 +190,7 @@ namespace Prog3 {
             return *this;
         delete[] cards;
         cards = a.cards;
+        size_real = a.size_real;
         size = a.size;
         a.cards = nullptr;
         a.size = 0;
@@ -218,6 +225,7 @@ namespace Prog3 {
                     i++;
             if ((i < size) && (cards[i].rang != r || cards[i].suit != s))
             {
+                size_real++;
                 if (cards[i].rang != -1) {
                     int j = i;
                     while (cards[j].rang != -1)
@@ -322,8 +330,11 @@ namespace Prog3 {
         r.Sort();
         return s;
     }
-    int DeckCard::getSize()const {
+    int DeckCard::getMemorySize()const {
         return size;
+    }
+    int DeckCard::getSize()const {
+        return size_real;
     }
     std::string dialog() {
 

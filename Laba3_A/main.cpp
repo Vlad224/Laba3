@@ -2,7 +2,7 @@
 using namespace Prog3;
 int main() {
 	srand((unsigned)time(0));
-	int b = 10;
+	int b = 52;
 	void(*dp[7])(DeckCard & r) = { nullptr, Prog3::F_Add, Prog3::F_Print,Prog3::F_Suit, Prog3::F_Rang,Prog3::F_Random_DeckCard,Prog3::F_EnterNew };
 	DeckCard a(b);
 	a.Sort();

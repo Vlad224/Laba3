@@ -174,7 +174,7 @@ namespace Prog3 {
     std::string DeckCard::Rang(int i)const {
         std::stringstream c;
         if (i == -1)
-            c << "Rang: " << "Empity" << std::endl;
+            c << "Rang: " << "Empty" << std::endl;
         if (i< 11 && i>= 0)
             c << "Rang: " << i << std::endl;
         if (i == 11)
@@ -190,7 +190,7 @@ namespace Prog3 {
     std::string DeckCard::Suit(int i)const {
         std::stringstream c;
         if (i == -1)
-            c << "Suit: " << "Empity" << std::endl;
+            c << "Suit: " << "Empty" << std::endl;
         if (i == 0)
             c << "Suit: " << "spades" << std::endl;
         if (i == 1)
@@ -290,6 +290,16 @@ namespace Prog3 {
         catch (std::exception & ex) {
             std::cout << ex.what() << std::endl;
         }
+    }
+    int DeckCard::GetRang(int a)const {
+        if (a<0 || a>size)
+            throw std::exception("invalid argument");
+        return cards[a].rang;
+    }
+    int DeckCard::GetSuit(int a)const {
+        if (a<0 || a>size)
+            throw std::exception("invalid argument");
+        return cards[a].suit;
     }
     void F_Rang(DeckCard& r) {
         int c;
